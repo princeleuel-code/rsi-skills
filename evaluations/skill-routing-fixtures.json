@@ -1,0 +1,19 @@
+{
+  "schema_version": "rsi-skill-routing-fixtures-1.0.0",
+  "fixtures": [
+    {"case_id":"memory-positive","skill_id":"canonical-memory-curator","project":"CANA","signals":["memory contradiction"],"expected":"ROUTE"},
+    {"case_id":"memory-negative","skill_id":"canonical-memory-curator","project":"CANA","signals":["temporary note"],"expected":"DO_NOT_ROUTE"},
+    {"case_id":"memory-cross-project","skill_id":"canonical-memory-curator","project":"ORDERWEEDDC","signals":["memory contradiction"],"expected":"DO_NOT_ROUTE"},
+    {"case_id":"heartbeat-positive","skill_id":"heartbeat-governor","project":"Hermes","signals":["scheduled heartbeat"],"expected":"ROUTE"},
+    {"case_id":"heartbeat-external-write","skill_id":"heartbeat-governor","project":"Hermes","signals":["external write without action contract"],"expected":"DO_NOT_ROUTE"},
+    {"case_id":"evidence-positive","skill_id":"evidence-verifier","project":"CANA","signals":["verify receipt"],"expected":"ROUTE"},
+    {"case_id":"evidence-self-reference","skill_id":"evidence-verifier","project":"CANA","signals":["self-referential report"],"expected":"DO_NOT_ROUTE"},
+    {"case_id":"feedback-positive","skill_id":"feedback-capability-compiler","project":"CANA","signals":["repeated correction"],"expected":"ROUTE"},
+    {"case_id":"feedback-single-session","skill_id":"feedback-capability-compiler","project":"CANA","signals":["single session"],"expected":"DO_NOT_ROUTE"},
+    {"case_id":"fusion-positive","skill_id":"cross-source-fusion","project":"ORBIT_OMEGA","signals":["fuse sources"],"expected":"ROUTE"},
+    {"case_id":"fusion-unsupported","skill_id":"cross-source-fusion","project":"ORBIT_OMEGA","signals":["unsupported conclusion"],"expected":"DO_NOT_ROUTE"},
+    {"case_id":"launch-review-positive","skill_id":"launch-gate-review","project":"ORDERWEEDDC","signals":["review launch gate"],"expected":"ROUTE"},
+    {"case_id":"launch-open-negative","skill_id":"launch-gate-review","project":"ORDERWEEDDC","signals":["open launch gate"],"expected":"DO_NOT_ROUTE"},
+    {"case_id":"ambiguous-review","skill_id":"launch-gate-review","project":"ORDERWEEDDC","signals":["review"],"expected":"HUMAN_REVIEW"}
+  ]
+}
